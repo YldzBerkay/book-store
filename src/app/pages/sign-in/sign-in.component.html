@@ -1,0 +1,32 @@
+<div class="left-container">
+    <ng-lottie [options]="loginAnimation" [width]="'100%'" [height]="'100%'"></ng-lottie>
+</div>
+<div class="right-container">
+    <div class="right-side-page-content">
+
+        <div class="top-side">
+            <h1>Sign in with email</h1>
+            <p>Don't have an account? <a routerLink="/sign-up">Sign Up</a></p>
+        </div>
+        <form class="form-common" [formGroup]="signInForm" (submit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Email address</mat-label>
+                <input formControlName="email" matInput type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error
+                    *ngIf="signInForm.controls.password.invalid && signInForm.controls.password.errors?.minLength && (signInForm.controls.password.dirty || signInForm.controls.password.touched)">Password
+                    must be minimum 6 characters!</mat-error>
+            </mat-form-field>
+
+            <mat-error class="form-mat-error" *ngIf="formError">{{formError}}</mat-error>
+
+            <div class="form-submit-button-container">
+                <button mat-flat-button class="submit-button-style" [disabled]="submitted">Sign In</button>
+            </div>
+        </form>
+    <div>
+</div>
