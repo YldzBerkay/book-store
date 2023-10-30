@@ -35,6 +35,14 @@ p{
     color: #54636E;
 }
 
+a{
+    color: #8B00FF !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
 .left-container {
     background-color: #54636E;
     width: 50dvw;
@@ -106,4 +114,8 @@ p{
         padding: 0 0.75rem;
     }
 
+}
+
+.set-visibility-icon{
+    cursor: pointer !important;
 }

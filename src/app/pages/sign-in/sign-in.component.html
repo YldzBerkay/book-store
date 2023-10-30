@@ -16,7 +16,7 @@
             <mat-form-field>
                 <mat-label>Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
-                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-icon class="set-visibility-icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-error
                     *ngIf="signInForm.controls.password.invalid && signInForm.controls.password.errors?.minLength && (signInForm.controls.password.dirty || signInForm.controls.password.touched)">Password
                     must be minimum 6 characters!</mat-error>
