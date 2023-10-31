@@ -32,13 +32,6 @@ export class SignUpInformationsComponent implements OnInit{
 
   ngOnInit(): void {}
 
-  loginInformationAnimation: Record<string, any> = {
-    path: '/assets/json/login_information_animation.json', // Path to your animation JSON file
-    renderer: 'svg', // Use 'canvas' or 'html' for different renderers
-    loop: true,
-    autoplay: true,
-  };
-
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.
     if (view === 'month') {

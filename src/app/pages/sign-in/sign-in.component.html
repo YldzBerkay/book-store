@@ -1,11 +1,15 @@
 <div class="left-container">
-    <ng-lottie [options]="loginAnimation" [width]="'100%'" [height]="'100%'"></ng-lottie>
+    <div class="sign-in">
+        <div class="content">
+            <ng-lottie [options]="loginAnimation" [width]="'100%'" [height]="'100%'"></ng-lottie>
+        </div>
+    </div>
 </div>
 <div class="right-container">
     <div class="right-side-page-content">
 
         <div class="top-side">
-            <h1>Sign In With Email</h1>
+            <h1>Sign In</h1>
             <p>Don't have an account? <a routerLink="/sign-up">Sign Up</a></p>
         </div>
         <form class="form-common" [formGroup]="signInForm" (submit)="onSubmit()">

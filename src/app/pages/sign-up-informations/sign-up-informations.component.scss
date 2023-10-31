@@ -1,0 +1,23 @@
+
+.sign-up-informations {
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../assets/img/onboarding/sign_up_informations.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-informations::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 1;   
+}
+
