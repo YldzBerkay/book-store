@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,7 @@ export class SignUpComponent implements OnInit {
     autoplay: true,
   };
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   registerForm = new UntypedFormGroup({
     email: new UntypedFormControl('', [
@@ -35,5 +36,6 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+    this.router.navigate(['/sign-up-informations']);
   }
 }
