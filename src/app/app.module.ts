@@ -15,7 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { LoginInformationsComponent } from './pages/login-informations/login-informations.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -28,7 +31,8 @@ export function playerFactory() {
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    LoginInformationsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ export function playerFactory() {
     MatButtonModule,
     NgIf,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
