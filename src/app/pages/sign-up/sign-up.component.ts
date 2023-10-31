@@ -36,6 +36,6 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    this.router.navigate(['/sign-up-informations']);
+    this.router.navigate(['/verify']);
   }
 }

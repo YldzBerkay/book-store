@@ -19,6 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { SignUpInformationsComponent } from './pages/sign-up-informations/sign-up-informations.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { VerifyComponent } from './pages/verify/verify.component';
+import { CodeInputModule } from 'angular-code-input';
 
 
 
@@ -32,7 +34,8 @@ export function playerFactory() {
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    SignUpInformationsComponent
+    SignUpInformationsComponent,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ export function playerFactory() {
     MatDividerModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CodeInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

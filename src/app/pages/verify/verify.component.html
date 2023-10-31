@@ -1,0 +1,22 @@
+<div class="left-container">
+    <ng-lottie [options]="verifyAnimation" [width]="'100%'" [height]="'100%'"></ng-lottie>
+</div>
+<div class="right-container">
+    <div class="right-side-page-content">
+        <div class="top-side">
+            <h1>Verify Your Email</h1>
+            <h3> We have sent a verification code to your email address.</h3>
+            <p>Enter the code:</p>
+        </div>
+        <form class="form-common" [formGroup]="verifyForm" (submit)="onSubmit()">
+            <code-input formControlName="code" [isCodeHidden]="false" [codeLength]="6"
+                (codeChanged)="onCodeChanged($event)" (codeCompleted)="onCodeCompleted($event)">
+                <input formControlName="code" matInput type="code">
+            </code-input>
+
+            <div class="form-submit-button-container">
+                <button mat-flat-button class="submit-button-style" [disabled]="submitted">Verify</button>
+            </div>
+        </form>
+    <div>
+</div>
