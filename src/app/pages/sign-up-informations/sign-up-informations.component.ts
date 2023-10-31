@@ -3,13 +3,13 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 
 @Component({
-  selector: 'app-login-informations',
-  templateUrl: './login-informations.component.html',
-  styleUrls: ['./login-informations.component.scss'],
+  selector: 'app-sign-up-informations',
+  templateUrl: './sign-up-informations.component.html',
+  styleUrls: ['./sign-up-informations.component.scss'],
   encapsulation: ViewEncapsulation.None,
 
 })
-export class LoginInformationsComponent implements OnInit{
+export class SignUpInformationsComponent implements OnInit{
   submitted = false;
   maxDate : Date;
 

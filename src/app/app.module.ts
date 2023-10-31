@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
-import { LoginInformationsComponent } from './pages/login-informations/login-informations.component';
+import { SignUpInformationsComponent } from './pages/sign-up-informations/sign-up-informations.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -32,7 +32,7 @@ export function playerFactory() {
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    LoginInformationsComponent
+    SignUpInformationsComponent
   ],
   imports: [
     BrowserModule,
