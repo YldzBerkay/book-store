@@ -5,7 +5,7 @@
     <div class="right-side-page-content">
 
         <div class="top-side">
-            <h1>Sign in with email</h1>
+            <h1>Sign In With Email</h1>
             <p>Don't have an account? <a routerLink="/sign-up">Sign Up</a></p>
         </div>
         <form class="form-common" [formGroup]="signInForm" (submit)="onSubmit()">
@@ -26,6 +26,8 @@
 
             <div class="form-submit-button-container">
                 <button mat-flat-button class="submit-button-style" [disabled]="submitted">Sign In</button>
+
+                <a routerLink="/forgot-password">Forgot Password</a>
             </div>
         </form>
     <div>
