@@ -1,3 +1,6 @@
-<app-side-navigation *ngIf="!showRegisterOutlet"></app-side-navigation>
 
-<router-outlet *ngIf="showRegisterOutlet"></router-outlet>
+@if (showRegisterOutlet){
+    <router-outlet></router-outlet>
+} @else {
+    <app-side-navigation></app-side-navigation>
+}

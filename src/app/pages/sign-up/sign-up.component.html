@@ -20,12 +20,14 @@
                 <mat-label>Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
                 <mat-icon class="set-visibility-icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <mat-error
-                    *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.errors?.minLength && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">Password
-                    must be minimum 6 characters!</mat-error>
+                @if (registerForm.controls.password.invalid && registerForm.controls.password.errors?.minLength && (registerForm.controls.password.dirty || registerForm.controls.password.touched)){
+                    <mat-error>Password must be minimum 6 characters!</mat-error>
+                }
             </mat-form-field>
 
-            <mat-error class="form-mat-error" *ngIf="formError">{{formError}}</mat-error>
+            @if (formError){
+                <mat-error class="form-mat-error">{{formError}}</mat-error>
+            }
 
             <div class="form-submit-button-container">
                 <button mat-flat-button class="submit-button-style" [disabled]="submitted">Sign Up</button>

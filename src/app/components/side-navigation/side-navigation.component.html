@@ -1,9 +1,9 @@
 <mat-toolbar>
     <button #buttonRef (click)="sidenav.toggle()" class="auto-click"></button>
-    
+
     <button class="expand-button-mat-icon">
-            <mat-icon class="expand-button" (click)="isExpanded = !isExpanded; saveData();" fontIcon="menu"
-                [ngClass]="{ rotated: isExpanded }"></mat-icon>
+        <mat-icon class="expand-button" (click)="isExpanded = !isExpanded; saveData();" fontIcon="menu"
+            [ngClass]="{ rotated: isExpanded }"></mat-icon>
     </button>
 
     <button mat-list-icon class="hamburger" (click)="sidenav.toggle()">
@@ -11,8 +11,7 @@
             <mat-icon class="menu-icon">menu</mat-icon>
         </div>
     </button>
-    <button class="side-navigation-logo" disableRipple="true"
-        [routerLink]="['/home']">
+    <button class="side-navigation-logo" disableRipple="true" [routerLink]="['/home']">
         <img src="assets/img/recycling_icon.png">
     </button>
     <span class="mat-toolbar-spacer"></span>
@@ -26,10 +25,12 @@
         <div>
             <div class="side-nav-items">
                 <div class="side-nav-item">
-                    <div class="side-nav-item-button" type="button" routerLinkActive="active"
-                        [routerLink]="['/home']" [ngClass]="{'active': urlPath('') && !urlPath('/about-us') && !urlPath('/communication')}">
+                    <div class="side-nav-item-button" type="button" routerLinkActive="active" [routerLink]="['/home']"
+                        [ngClass]="{'active': urlPath('') && !urlPath('/about-us') && !urlPath('/communication')}">
                         <mat-icon fontIcon="home"></mat-icon>
-                        <span *ngIf="isExpanded" class="side-nav-item-button-span">Home</span>
+                        @if (isExpanded){
+                        <span class="side-nav-item-button-span">Home</span>
+                        }
                     </div>
                 </div>
             </div>
@@ -39,7 +40,7 @@
     <mat-drawer-content>
         <div class="page-content">
             <router-outlet>
-                
+
             </router-outlet>
         </div>
     </mat-drawer-content>
