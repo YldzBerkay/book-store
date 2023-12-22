@@ -21,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { VerifyComponent } from './pages/verify/verify.component';
 import { CodeInputModule } from 'angular-code-input';
+import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
 
 
 
@@ -35,7 +36,8 @@ export function playerFactory() {
     SignUpComponent,
     ForgotPasswordComponent,
     SignUpInformationsComponent,
-    VerifyComponent
+    VerifyComponent,
+    SideNavigationComponent
   ],
   imports: [
     BrowserModule,
