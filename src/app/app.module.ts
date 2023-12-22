@@ -23,6 +23,10 @@ import { VerifyComponent } from './pages/verify/verify.component';
 import { CodeInputModule } from 'angular-code-input';
 import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { HomeComponent } from './pages/home/home.component';
 
 
 export function playerFactory() {
@@ -37,7 +41,8 @@ export function playerFactory() {
     ForgotPasswordComponent,
     SignUpInformationsComponent,
     VerifyComponent,
-    SideNavigationComponent
+    SideNavigationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,10 @@ export function playerFactory() {
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CodeInputModule
+    CodeInputModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
