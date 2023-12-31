@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,6 +13,7 @@ export class SignUpComponent implements OnInit {
   formError: any;
   formPasswordError: any;
   submitted = false;
+  errorMessage = '';
 
   welcomeAnimation: Record<string, any> = {
     path: '/assets/json/welcome_animation.json', // Path to your animation JSON file
@@ -20,7 +22,7 @@ export class SignUpComponent implements OnInit {
     autoplay: true,
   };
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private authService:AuthService) { }
 
   registerForm = new UntypedFormGroup({
     email: new UntypedFormControl('', [
@@ -35,7 +37,13 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void { }
 
   onSubmit(): void {
-    this.submitted = true;
-    this.router.navigate(['/verify']);
+    this.authService.signUp(this.registerForm.value.email, this.registerForm.value.password).subscribe(
+      (res) => {
+        res.isSuccessful ? this.router.navigate(['/verify']) : this.errorMessage = res.data ;
+      },
+      (err) => {
+        this.formError = err.error;
+      }
+    );
   }
 }

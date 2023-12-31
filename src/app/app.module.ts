@@ -27,6 +27,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './pages/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 export function playerFactory() {
@@ -63,7 +65,8 @@ export function playerFactory() {
     CodeInputModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
