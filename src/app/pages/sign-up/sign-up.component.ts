@@ -4,46 +4,47 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+    selector: 'app-sign-up',
+    templateUrl: './sign-up.component.html',
+    styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  hide = true;
-  formError: any;
-  formPasswordError: any;
-  submitted = false;
-  errorMessage = '';
+    hide = true;
+    formError: any;
+    formPasswordError: any;
+    submitted = false;
+    errorMessage = '';
 
-  welcomeAnimation: Record<string, any> = {
-    path: '/assets/json/welcome_animation.json', // Path to your animation JSON file
-    renderer: 'svg', // Use 'canvas' or 'html' for different renderers
-    loop: true,
-    autoplay: true,
-  };
+    welcomeAnimation: Record<string, any> = {
+        path: '/assets/json/welcome_animation.json', // Path to your animation JSON file
+        renderer: 'svg', // Use 'canvas' or 'html' for different renderers
+        loop: true,
+        autoplay: true,
+    };
 
-  constructor(private router:Router, private authService:AuthService) { }
+    constructor(private router: Router, private authService: AuthService) { }
 
-  registerForm = new UntypedFormGroup({
-    email: new UntypedFormControl('', [
-      Validators.required,
-    ]),
-    password: new UntypedFormControl('', [
-      Validators.required,
-      Validators.minLength(6)
-    ]),
-  });
+    registerForm = new UntypedFormGroup({
+        email: new UntypedFormControl('', [
+            Validators.required,
+        ]),
+        password: new UntypedFormControl('', [
+            Validators.required,
+            Validators.minLength(6)
+        ]),
+    });
 
-  ngOnInit(): void { }
+    ngOnInit(): void { }
 
-  onSubmit(): void {
-    this.authService.signUp(this.registerForm.value.email, this.registerForm.value.password).subscribe(
-      (res) => {
-        res.isSuccessful ? this.router.navigate(['/verify']) : this.errorMessage = res.data ;
-      },
-      (err) => {
-        this.formError = err.error;
-      }
-    );
-  }
+    onSubmit(): void {
+        this.authService.signUp(this.registerForm.value.email, this.registerForm.value.password).subscribe(
+            (res) => {
+                this.router.navigate(['/verify']);     
+                this.authService.userEmail = this.registerForm.value.email;
+            },
+            (err) => {
+                this.formError = err.error;
+            }
+        );
+    }
 }

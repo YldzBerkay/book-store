@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {CodeInputComponent} from 'angular-code-input';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-verify',
@@ -24,7 +25,7 @@ export class VerifyComponent implements OnInit{
   });
 
   @ViewChild('codeInput') codeInput !: CodeInputComponent;
-  constructor(private router:Router) { }
+  constructor(private router:Router, private authService: AuthService) { }
 
   ngOnInit(): void {}
 

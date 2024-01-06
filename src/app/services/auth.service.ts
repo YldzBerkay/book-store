@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class AuthService {
+    
+    userEmail: string;
     baseUrl = 'https://localhost:7044/api/v1/user';
 
     constructor(private httpClient: HttpClient) {
@@ -14,7 +16,8 @@ export class AuthService {
     }
 
     signUp(email: string, password: string): Observable<CustomResponse<string>> {
-        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/sign-up`, { email, password });
+
+        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/sign-up`, null,{ params: { email, password } });
     }
 
     sendOtpVerification(token: string): Observable<CustomResponse<string>> {
