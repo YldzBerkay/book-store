@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up-informations',
@@ -25,7 +27,7 @@ export class SignUpInformationsComponent implements OnInit{
   ]),
 });
 
-  constructor() { 
+  constructor(private router:Router, private authService: AuthService) { 
     const today = new Date();
     this.maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
   }
@@ -47,5 +49,13 @@ export class SignUpInformationsComponent implements OnInit{
   onSubmit(): void {
     this.submitted = true;
     console.log(this.informationForm.value);
+    this.authService.additinalFields(this.informationForm.value.name, this.informationForm.value.surname, this.informationForm.value.birthday).then(
+      (res) => {
+        this.router.navigate(['/home']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
