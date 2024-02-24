@@ -22,11 +22,11 @@ export class AuthService {
         return await this.request.send("/user/sign-up", command);
     }
 
-    sendOtpVerification(token: string, email: string, password:string): Observable<CustomResponse<string>> {
-        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/send-otp-verification`,null, { params: { token, email, password } });
+    async sendOtpVerification(token: string, email: string, password:string): Promise<CustomResponse<string>> {
+        return await this.request.send("/user/send-otp-verification", { token, email, password });
     }
 
-    additinalFields(name:string,surname:string, birthDate:Date, email: string): Observable<CustomResponse<string>> {
-        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/additional-fields`,null, { params: { name, surname, birthDate: birthDate.toString(), email } });
+    async additinalFields(name:string,surname:string, birthDate:Date): Promise<CustomResponse<string>> {
+        return await this.request.send("/user/additional-fields", { name, surname, birthDate});
     }
 }
