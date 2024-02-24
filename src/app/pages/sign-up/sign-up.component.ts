@@ -39,15 +39,17 @@ export class SignUpComponent implements OnInit {
 
     async onSubmit(): Promise<void> {
         const command : SignUpRequestCommand = {
-            email: this.registerForm.value.email,
-            password: this.registerForm.value.password
+            Email: this.registerForm.value.email,
+            Password: this.registerForm.value.password
         };
         const response = await this.authService.signUp(command);
         
-        if (response.isSuccessful) {
+        if (response.IsSuccessful) {
+            this.authService.userEmail = this.registerForm.value.email;
+            this.authService.userPassword = this.registerForm.value.password;
             this.router.navigate(['/verify']);
         } else {
-            this.formError = response.data;
+            this.formError = response.Data;
         }
     }
 }

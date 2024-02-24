@@ -1,17 +1,17 @@
 export class SignUpRequestCommand {
-    email: string;
-    password: string;
+    Email: string;
+    Password: string;
 }
 
 export class SendOtpVerificationRequestCommand {
-    email: string;
-    password: string;
-    otp: string;
+    Token: string;
+    Email: string;
+    Password: string;
 }
 
 export class AdditionalFieldsRequestCommand{
-    name: string;
-    surname: string;
-    birthDate: Date;
-    email: string;
+    Name: string;
+    Surname: string;
+    BirthDate: Date;
+    Email: string;
 }
