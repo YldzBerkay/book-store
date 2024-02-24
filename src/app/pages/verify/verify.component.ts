@@ -45,15 +45,15 @@ export class VerifyComponent implements OnInit{
   async onSubmit(): Promise<void> {
     
     const command : SendOtpVerificationRequestCommand = {
-      email: this.authService.userEmail,
-      password: this.authService.userPassword,
-      otp: this.verifyForm.value.code
+      Email: this.authService.userEmail,
+      Password: this.authService.userPassword,
+      Token: this.verifyForm.value.code
     };
     const response = await this.authService.sendOtpVerification(command);
-    if (response.isSuccessful) {
+    if (response.IsSuccessful) {
       this.router.navigate(['/sign-up-informations']);
     } else {
-      this.formError = response.data;
+      this.formError = response.Data;
     }
   }
 }

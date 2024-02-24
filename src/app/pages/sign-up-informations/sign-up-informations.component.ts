@@ -54,16 +54,16 @@ export class SignUpInformationsComponent implements OnInit {
   async onSubmit(): Promise<void> {
     this.submitted = true;
     const command : AdditionalFieldsRequestCommand = {
-      name: this.informationForm.value.name,
-      surname: this.informationForm.value.surname,
-      birthDate: this.informationForm.value.birthday,
-      email: this.authService.userEmail
+      Name: this.informationForm.value.name,
+      Surname: this.informationForm.value.surname,
+      BirthDate: this.informationForm.value.birthday,
+      Email: this.authService.userEmail
     };
     const response = await this.authService.additinalFields(command);
-    if (response.isSuccessful) {
+    if (response.IsSuccessful) {
       this.router.navigate(['/home']);
     } else {
-      console.log(response.data);
+      console.log(response.Data);
     }
     
   }
