@@ -37,20 +37,11 @@ export class SignUpComponent implements OnInit {
 
     ngOnInit(): void { }
 
-    onSubmit(): void {
+    async onSubmit(): Promise<void> {
         const command : SignUpRequestCommand = {
             email: this.registerForm.value.email,
             password: this.registerForm.value.password
         };
-        this.authService.signUp(command).subscribe(
-            (res) => {
-                this.router.navigate(['/verify']);     
-                this.authService.userEmail = this.registerForm.value.email;
-                this.authService.userPassword = this.registerForm.value.password;
-            },
-            (err) => {
-                this.formError = err.error;
-            }
-        );
+        const response = await this.authService.signUp(command);
     }
 }
