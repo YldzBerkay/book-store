@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
+import { AdditionalFieldsRequestCommand } from 'src/app/models/commands/auth-request-commands';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,28 +12,32 @@ import { AuthService } from 'src/app/services/auth.service';
   encapsulation: ViewEncapsulation.None,
 
 })
-export class SignUpInformationsComponent implements OnInit{
+export class SignUpInformationsComponent implements OnInit {
   submitted = false;
-  maxDate : Date;
+  maxDate: Date;
 
   informationForm = new UntypedFormGroup({
     name: new UntypedFormControl('', [
-        Validators.required,
+      Validators.required,
     ]),
     surname: new UntypedFormControl('', [
-        Validators.required,
+      Validators.required,
     ]),
     birthday: new UntypedFormControl('', [
       Validators.required,
-  ]),
-});
+    ]),
+  });
 
-  constructor(private router:Router, private authService: AuthService) { 
+  constructor(private router: Router, private authService: AuthService) {
     const today = new Date();
     this.maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { 
+    if(this.authService.userEmail == null){
+      this.router.navigate(['/sign-in']);
+    }
+  }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.
@@ -46,16 +51,21 @@ export class SignUpInformationsComponent implements OnInit{
     return '';
   };
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     this.submitted = true;
-    console.log(this.informationForm.value);
-    this.authService.additinalFields(this.informationForm.value.name, this.informationForm.value.surname, this.informationForm.value.birthday).then(
-      (res) => {
-        this.router.navigate(['/home']);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    const command : AdditionalFieldsRequestCommand = {
+      name: this.informationForm.value.name,
+      surname: this.informationForm.value.surname,
+      birthDate: this.informationForm.value.birthday,
+      email: this.authService.userEmail
+    };
+    const response = await this.authService.additinalFields(command);
+    if (response.isSuccessful) {
+      this.router.navigate(['/home']);
+    } else {
+      console.log(response.data);
+    }
+    
   }
+
 }

@@ -43,5 +43,11 @@ export class SignUpComponent implements OnInit {
             password: this.registerForm.value.password
         };
         const response = await this.authService.signUp(command);
+        
+        if (response.isSuccessful) {
+            this.router.navigate(['/verify']);
+        } else {
+            this.formError = response.data;
+        }
     }
 }

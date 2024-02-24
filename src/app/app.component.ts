@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
     constructor(private router: Router, private activatedRoute: ActivatedRoute) {
         // Subscribe to route changes to update visibility
         this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-            console.log(this.showRegisterOutlet);
 
         });
     }

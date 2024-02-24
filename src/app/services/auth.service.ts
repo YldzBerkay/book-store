@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomResponse } from '../models/custom-response';
 import { Observable } from 'rxjs';
-import { SignUpRequestCommand } from '../models/commands/auth-request-commands';
+import { AdditionalFieldsRequestCommand, SendOtpVerificationRequestCommand, SignUpRequestCommand } from '../models/commands/auth-request-commands';
 import { RequestService } from './base/request.service';
 
 @Injectable({
@@ -19,14 +19,14 @@ export class AuthService {
     }
 
     async signUp(command: SignUpRequestCommand): Promise<CustomResponse<string>> {
-        return await this.request.send("/user/sign-up", command);
+        return await this.request.send("/auth/sign-up", command);
     }
 
-    async sendOtpVerification(token: string, email: string, password:string): Promise<CustomResponse<string>> {
-        return await this.request.send("/user/send-otp-verification", { token, email, password });
+    async sendOtpVerification(command: SendOtpVerificationRequestCommand): Promise<CustomResponse<string>> {
+        return await this.request.send("/auth/send-otp-verification",command);
     }
 
-    async additinalFields(name:string,surname:string, birthDate:Date): Promise<CustomResponse<string>> {
-        return await this.request.send("/user/additional-fields", { name, surname, birthDate});
+    async additinalFields(command: AdditionalFieldsRequestCommand): Promise<CustomResponse<string>> {
+        return await this.request.send("/auth/additional-fields", command);
     }
 }
