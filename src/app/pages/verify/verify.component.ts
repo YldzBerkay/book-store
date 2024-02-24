@@ -42,7 +42,7 @@ export class VerifyComponent implements OnInit{
   }
 
   onSubmit(): void {
-    this.authService.sendOtpVerification(this.verifyForm.value.code, this.authService.userEmail).subscribe(
+    this.authService.sendOtpVerification(this.verifyForm.value.code, this.authService.userEmail, this.authService.userPassword).subscribe(
       (res) => {
         this.router.navigate(['/sign-up-informations']);
       },

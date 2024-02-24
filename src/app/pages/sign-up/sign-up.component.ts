@@ -41,6 +41,7 @@ export class SignUpComponent implements OnInit {
             (res) => {
                 this.router.navigate(['/verify']);     
                 this.authService.userEmail = this.registerForm.value.email;
+                this.authService.userPassword = this.registerForm.value.password;
             },
             (err) => {
                 this.formError = err.error;
