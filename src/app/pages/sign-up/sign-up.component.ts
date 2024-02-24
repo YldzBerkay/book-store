@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignUpRequestCommand } from 'src/app/models/commands/auth-request-commands';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -37,7 +38,11 @@ export class SignUpComponent implements OnInit {
     ngOnInit(): void { }
 
     onSubmit(): void {
-        this.authService.signUp(this.registerForm.value.email, this.registerForm.value.password).subscribe(
+        const command : SignUpRequestCommand = {
+            email: this.registerForm.value.email,
+            password: this.registerForm.value.password
+        };
+        this.authService.signUp(command).subscribe(
             (res) => {
                 this.router.navigate(['/verify']);     
                 this.authService.userEmail = this.registerForm.value.email;

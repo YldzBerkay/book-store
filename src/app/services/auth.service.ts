@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomResponse } from '../models/custom-response';
 import { Observable } from 'rxjs';
+import { SignUpRequestCommand } from '../models/commands/auth-request-commands';
 
 @Injectable({
     providedIn: 'root'
@@ -16,9 +17,8 @@ export class AuthService {
 
     }
 
-    signUp(email: string, password: string): Observable<CustomResponse<string>> {
-
-        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/sign-up`, null,{ params: { email, password } });
+    signUp(command: SignUpRequestCommand): Observable<CustomResponse<string>> {
+        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/sign-up`, command);
     }
 
     sendOtpVerification(token: string, email: string, password:string): Observable<CustomResponse<string>> {
