@@ -27,7 +27,11 @@ export class VerifyComponent implements OnInit{
   @ViewChild('codeInput') codeInput !: CodeInputComponent;
   constructor(private router:Router, private authService: AuthService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.authService.userEmail == null){
+      this.router.navigate(['/sign-up']);
+    }
+  }
 
   onCodeChanged(code: string) {
   }
@@ -38,8 +42,13 @@ export class VerifyComponent implements OnInit{
   }
 
   onSubmit(): void {
-    this.submitted = true;
-    console.log(this.verifyForm.value);
-    this.router.navigate(['/sign-up-informations']);
+    this.authService.sendOtpVerification(this.verifyForm.value.code, this.authService.userEmail).subscribe(
+      (res) => {
+        this.router.navigate(['/sign-up-informations']);
+      },
+      (err) => {
+        this.formError = err.error;
+      }
+    );
   }
 }

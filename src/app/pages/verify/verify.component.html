@@ -13,7 +13,7 @@
             <p>Enter the code:</p>
         </div>
         <form class="form-common" [formGroup]="verifyForm" (submit)="onSubmit()">
-            <code-input formControlName="code" [isCodeHidden]="false" [codeLength]="6"
+            <code-input ngDefaultControl formControlName="code" [isCodeHidden]="false" [codeLength]="6"
                 (codeChanged)="onCodeChanged($event)" (codeCompleted)="onCodeCompleted($event)">
                 <input formControlName="code" matInput type="code">
             </code-input>

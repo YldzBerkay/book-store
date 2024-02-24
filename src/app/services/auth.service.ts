@@ -20,11 +20,11 @@ export class AuthService {
         return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/sign-up`, null,{ params: { email, password } });
     }
 
-    sendOtpVerification(token: string): Observable<CustomResponse<string>> {
-        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/send-otp-verification`, { token });
+    sendOtpVerification(token: string, email: string): Observable<CustomResponse<string>> {
+        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/send-otp-verification`,null, { params: { token, email } });
     }
 
-    additinalFields(name:string,surname:string, birthDate:Date): Observable<CustomResponse<string>> {
-        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/additional-fields`, { name, surname, birthDate });
+    additinalFields(name:string,surname:string, birthDate:Date, email: string): Observable<CustomResponse<string>> {
+        return this.httpClient.post<CustomResponse<string>>(`${this.baseUrl}/additional-fields`,null, { params: { name, surname, birthDate: birthDate.toString(), email } });
     }
 }
