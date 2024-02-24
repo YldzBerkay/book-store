@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {CodeInputComponent} from 'angular-code-input';
+import { SendOtpVerificationRequestCommand } from 'src/app/models/commands/auth-request-commands';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -41,15 +42,18 @@ export class VerifyComponent implements OnInit{
     this.onSubmit();
   }
 
-  onSubmit(): void {
-
-    this.authService.sendOtpVerification(this.verifyForm.value.code, this.authService.userEmail, this.authService.userPassword).then(
-      (res) => {
-        this.router.navigate(['/sign-up-informations']);
-      },
-      (err) => {
-        this.formError = err.error;
-      }
-    );
+  async onSubmit(): Promise<void> {
+    
+    const command : SendOtpVerificationRequestCommand = {
+      email: this.authService.userEmail,
+      password: this.authService.userPassword,
+      otp: this.verifyForm.value.code
+    };
+    const response = await this.authService.sendOtpVerification(command);
+    if (response.isSuccessful) {
+      this.router.navigate(['/sign-up-informations']);
+    } else {
+      this.formError = response.data;
+    }
   }
 }
