@@ -12,14 +12,14 @@
             <h3> We have sent a verification code to your email address.</h3>
             <p>Enter the code:</p>
         </div>
-        <form class="form-common" [formGroup]="verifyForm" (submit)="onSubmit()">
+        <form class="form-common" [formGroup]="verifyForm">
             <code-input ngDefaultControl formControlName="code" [isCodeHidden]="false" [codeLength]="6"
                 (codeChanged)="onCodeChanged($event)" (codeCompleted)="onCodeCompleted($event)">
                 <input formControlName="code" matInput type="code">
             </code-input>
 
             <div class="form-submit-button-container">
-                <button mat-flat-button class="submit-button-style" [disabled]="submitted">Verify</button>
+                <button (click)="onSubmit()" mat-flat-button class="submit-button-style" [disabled]="submitted">Verify</button>
             </div>
         </form>
     <div>
