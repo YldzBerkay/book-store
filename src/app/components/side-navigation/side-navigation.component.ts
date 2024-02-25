@@ -19,7 +19,7 @@ export class SideNavigationComponent implements OnInit {
     ngOnInit(): void {
         const storedValue = localStorage.getItem('expanded');
 
-        const isSmallScreen = window.innerWidth < 768;
+        const isSmallScreen = window.innerWidth < 1200;
 
         if (isSmallScreen) {
             this.shouldClick = false;
@@ -63,6 +63,6 @@ export class SideNavigationComponent implements OnInit {
     }
 
     isSmallScreen(): boolean {
-        return window.innerWidth < 768;
+        return window.innerWidth < 1200;
     }
 }
