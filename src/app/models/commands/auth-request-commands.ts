@@ -29,3 +29,8 @@ export class SignInResponse{
     AuthToken: AuthToken;
     RefreshToken: string;
 }
+
+export class RefreshTokenRequestCommand{
+    UserId: string;
+    RefreshToken: string;
+}

@@ -61,10 +61,11 @@ export class SignUpInformationsComponent implements OnInit {
     };
     const response = await this.authService.additinalFields(command);
     if (response.IsSuccessful) {
-      this.router.navigate(['/home']);
-    } else {
-      console.log(response.Error);
-    }
+      this.authService.userEmail = '';
+      this.authService.userPassword = '';
+      this.authService.updateUser(response.Data);
+      this.router.navigate(['']);
+    } else {}
 
   }
 

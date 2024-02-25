@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { RefreshTokenRequestCommand } from './models/commands/auth-request-commands';
+import { AuthService } from './services/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -10,22 +12,40 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
     showRegisterOutlet: boolean = false;
     title = 'book-store';
+    tokenExpires: Date = new Date();
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
         // Subscribe to route changes to update visibility
-        this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-
-        });
     }
 
     ngOnInit(): void {
+
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
-                // Update registerMode based on the current route
                 this.showRegisterOutlet = this.isRegisterRoute(event.url);
+                this.refreshToken();
             }
         });
     }
+
+    private async refreshToken(): Promise<void> {
+
+        this.tokenExpires = new Date(localStorage.getItem('userExpire') || '');
+        const currentTime = new Date();
+        if (currentTime > this.tokenExpires) {
+            const command: RefreshTokenRequestCommand = {
+                RefreshToken: localStorage.getItem('userRefreshToken') || '',
+                UserId: localStorage.getItem('userId') || ''
+            };
+            const response = await this.authService.refreshToken(command);
+
+            if (response.IsSuccessful) {
+                this.authService.updateToken(response.Data);
+                console.log('Token is refreshed');
+            }
+        }
+    }
+
 
     private isRegisterRoute(url: string): boolean {
         // Define an array of paths that require registerMode to be true

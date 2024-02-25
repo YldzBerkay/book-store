@@ -9,9 +9,9 @@ export class AuthguardService {
   constructor(private router: Router) { }
 
   canActivate = (): boolean => {
-    let isAuth = localStorage.getItem("token") !== null
+    let isAuth = localStorage.getItem("userAuthToken") === null;
     if (!isAuth) {
-      this.router.navigate(["/login"]);
+      this.router.navigate(['/']);
       return false;
     }
     return isAuth

@@ -44,10 +44,12 @@ export class SignInComponent {
         };
         const response = await this.authService.signIn(command);
         if (response.IsSuccessful) {
-            this.authService.userEmail = this.signInForm.value.email;
-            this.authService.userPassword = this.signInForm.value.password;
             if(!response.Data.User.IsRegistrationCompleted){
                 this.router.navigate(['/sign-up-informations']);
+            }
+            else{
+                this.authService.updateUser(response.Data);
+                this.router.navigate(['/']);                
             }
         }else{
             this.formError = response.Error.join(" ");

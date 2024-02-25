@@ -11,7 +11,7 @@
             <mat-icon class="menu-icon">menu</mat-icon>
         </div>
     </button>
-    <button class="side-navigation-logo" disableRipple="true" [routerLink]="['/home']">
+    <button class="side-navigation-logo" disableRipple="true" [routerLink]="['']">
         <img src="assets/img/recycling_icon.png">
     </button>
     <span class="mat-toolbar-spacer"></span>
@@ -25,7 +25,7 @@
         <div>
             <div class="side-nav-items">
                 <div class="side-nav-item">
-                    <div class="side-nav-item-button" type="button" routerLinkActive="active" [routerLink]="['/home']"
+                    <div class="side-nav-item-button" type="button" routerLinkActive="active" [routerLink]="['']"
                         [ngClass]="{'active': urlPath('') && !urlPath('/about-us') && !urlPath('/communication')}">
                         <mat-icon fontIcon="home"></mat-icon>
                         @if (isExpanded){
