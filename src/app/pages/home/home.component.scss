@@ -1,0 +1,22 @@
+p-carousel{
+    width: 100%;
+}
+
+.test{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+:host ::ng-deep {
+    .product-item {
+        .product-item-content {
+            border: 1px solid var(--surface-d);
+            border-radius: 3px;
+            margin: .3rem;
+            text-align: center;
+            padding: 2rem 0;
+        }
+    
+    }
+}

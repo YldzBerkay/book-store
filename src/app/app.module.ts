@@ -28,7 +28,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BookCardComponent } from './components/side-navigation/book-card/book-card.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
+import { CarouselModule } from 'primeng/carousel';
 
 
 
@@ -68,7 +69,8 @@ export function playerFactory() {
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

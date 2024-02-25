@@ -8,8 +8,13 @@
             <div class="card-header">
                 <h3>New Books</h3>
             </div>
-            <app-book-card ></app-book-card>
-        </div>
-    </div>
 
+            <p-carousel [value]="products" [numVisible]="4" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+                <ng-template let-product pTemplate="item">
+                    <app-book-card></app-book-card>
+                </ng-template>
+            </p-carousel>
+        </div>
+
+    </div>
 </div>
