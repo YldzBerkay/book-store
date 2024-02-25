@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CustomResponse } from '../models/custom-response';
-import { AdditionalFieldsRequestCommand, SendOtpVerificationRequestCommand, SignUpRequestCommand } from '../models/commands/auth-request-commands';
+import { AdditionalFieldsRequestCommand, SendOtpVerificationRequestCommand, SignInResponse, SignUpRequestCommand } from '../models/commands/auth-request-commands';
 import { RequestService } from './base/request.service';
 
 @Injectable({
@@ -22,5 +22,9 @@ export class AuthService {
 
     async additinalFields(command: AdditionalFieldsRequestCommand): Promise<CustomResponse<string>> {
         return await this.request.send("/auth/additional-fields", command);
+    }
+
+    async signIn(command: SignUpRequestCommand): Promise<CustomResponse<SignInResponse>> {
+        return await this.request.send("/auth/sign-in", command);
     }
 }

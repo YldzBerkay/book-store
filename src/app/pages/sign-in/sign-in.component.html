@@ -31,7 +31,7 @@
             }
 
             <div class="form-submit-button-container">
-                <button mat-flat-button class="submit-button-style" [disabled]="submitted">Sign In</button>
+                <button mat-flat-button class="submit-button-style" [disabled]="submitted===true" (click)="onSubmit()">Sign In</button>
 
                 <a routerLink="/forgot-password">Forgot Password</a>
             </div>
