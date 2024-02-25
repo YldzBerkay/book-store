@@ -53,7 +53,7 @@ export class VerifyComponent implements OnInit{
     if (response.IsSuccessful) {
       this.router.navigate(['/sign-up-informations']);
     } else {
-      this.formError = response.Data;
+      this.formError = response.Error.join(" ");
     }
   }
 }

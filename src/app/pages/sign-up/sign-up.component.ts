@@ -49,7 +49,7 @@ export class SignUpComponent implements OnInit {
             this.authService.userPassword = this.registerForm.value.password;
             this.router.navigate(['/verify']);
         } else {
-            this.formError = response.Data;
+            this.formError = response.Error.join(" ");
         }
     }
 }
