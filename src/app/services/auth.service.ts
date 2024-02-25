@@ -7,7 +7,6 @@ import { RequestService } from './base/request.service';
     providedIn: 'root'
 })
 export class AuthService {
-
     userEmail: string;
     userPassword: string;
 

@@ -7,7 +7,6 @@ import { CustomResponse } from 'src/app/models/custom-response';
   providedIn: 'root'
 })
 export class RequestService {
-
   baseUrl = 'https://localhost:7044/api/v1';
   constructor(private httpClient: HttpClient) { }
 

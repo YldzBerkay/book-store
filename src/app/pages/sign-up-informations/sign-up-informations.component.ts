@@ -33,8 +33,8 @@ export class SignUpInformationsComponent implements OnInit {
     this.maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
   }
 
-  ngOnInit(): void { 
-    if(this.authService.userEmail == null){
+  ngOnInit(): void {
+    if (this.authService.userEmail == null) {
       this.router.navigate(['/sign-in']);
     }
   }
@@ -53,7 +53,7 @@ export class SignUpInformationsComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     this.submitted = true;
-    const command : AdditionalFieldsRequestCommand = {
+    const command: AdditionalFieldsRequestCommand = {
       Name: this.informationForm.value.name,
       Surname: this.informationForm.value.surname,
       BirthDate: this.informationForm.value.birthday,
@@ -63,9 +63,9 @@ export class SignUpInformationsComponent implements OnInit {
     if (response.IsSuccessful) {
       this.router.navigate(['/home']);
     } else {
-      console.log(response.Data);
+      console.log(response.Error);
     }
-    
+
   }
 
 }
