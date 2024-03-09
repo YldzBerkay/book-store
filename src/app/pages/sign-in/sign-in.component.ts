@@ -49,12 +49,20 @@ export class SignInComponent {
                 this.router.navigate(['/sign-up-informations']);
             }
             else{
-                this.authService.updateUser(response.Data);                
-                this.router.navigate(['/']);                
+                this.authService.updateUser(response.Data);     
+                await this.getUser();           
+                this.router.navigate(['/']);
             }
         }else{
             this.formError = response.Error.join(" ");
             this.submitted = false;
+        }
+    }
+
+    async getUser(){
+        const response = await this.authService.getUserInfo();
+        if(response.IsSuccessful){
+            localStorage.setItem('user', JSON.stringify(response.Data.User));
         }
     }
 }

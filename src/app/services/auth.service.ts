@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CustomResponse } from '../models/custom-response';
-import { AdditionalFieldsRequestCommand, RefreshTokenRequestCommand, SendOtpVerificationRequestCommand, SignInResponse, SignUpRequestCommand } from '../models/commands/auth-request-commands';
+import { AdditionalFieldsRequestCommand, GetUserResponse, RefreshTokenRequestCommand, SendOtpVerificationRequestCommand, SignInResponse, SignUpRequestCommand } from '../models/commands/auth-request-commands';
 import { RequestService } from './base/request.service';
 import { AuthToken } from '../models/auth/auth-token';
+import { User } from '../models/auth/user';
 
 interface data {
     userId: string | null;
@@ -41,8 +42,8 @@ export class AuthService {
         return await this.request.send("/auth/refresh-token", command);
     }
 
-    async deneme(): Promise<any> {
-        return await this.request.send("/auth/deneme");
+    async getUserInfo(): Promise<CustomResponse<GetUserResponse>> {
+        return await this.request.send("/auth/get-user");
     }
 
     updateUser(user: SignInResponse): void {
@@ -66,6 +67,7 @@ export class AuthService {
         localStorage.removeItem('userAuthToken');
         localStorage.removeItem('userRefreshToken');
         localStorage.removeItem('userExpire');
+        localStorage.removeItem('user');
     }
 
     getUser(): data {
@@ -75,6 +77,11 @@ export class AuthService {
             userRefreshToken: localStorage.getItem('userRefreshToken'),
             userExpire: localStorage.getItem('userExpire')
         };
+    }
+
+    getUserInfoFromStorage(): User {
+        const user = localStorage.getItem('user');
+        return user ? JSON.parse(user) : new User();
     }
 
     isUserSignedIn(): boolean {

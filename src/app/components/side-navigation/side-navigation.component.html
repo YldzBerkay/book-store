@@ -1,68 +1,9 @@
-<mat-toolbar>
-    <button #buttonRef (click)="sidenav.toggle()" class="auto-click"></button>
 
-    <button class="expand-button-mat-icon">
-        <mat-icon class="expand-button" (click)="isExpanded = !isExpanded; saveData();" fontIcon="menu"
-            [ngClass]="{ rotated: isExpanded }"></mat-icon>
-    </button>
-
-    <button mat-list-icon class="hamburger" (click)="sidenav.toggle()">
-        <div class="hamburger-div">
-            <mat-icon class="menu-icon">menu</mat-icon>
-        </div>
-    </button>
-    <button class="side-navigation-logo" disableRipple="true" [routerLink]="['']">
-        <img src="assets/img/recycling_icon.png">
-    </button>
-    <span class="mat-toolbar-spacer"></span>
-    <button [matMenuTriggerFor]="menu" class="user-box">
-        @if (authService.isUserSignedIn()) {
-            Berkay
-        }@else {
-            Hi, Sign in
-        }
-    </button>
-    <mat-menu #menu="matMenu">
-        @if(authService.isUserSignedIn()){
-            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'settings'">
-                <mat-icon>settings</mat-icon>
-                Settings
-            </a>
-
-            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'orders'">
-                <mat-icon>shopping_cart</mat-icon>
-                Orders
-            </a>
-
-            <a class="mat-menu-item-button" mat-menu-item (click)="authService.removeUser()">
-                <mat-icon>exit_to_app</mat-icon>
-                Sign out
-            </a>
-        }
-        @else {
-            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'sign-in'">
-                <mat-icon>account_circle</mat-icon>
-                Sign in
-            </a>
-            <div class="sign-up-container">
-                <span>Are you new?</span>
-                <a [routerLink]="'sign-up'">
-                    Sign up
-                </a>
-            </div>
-        }
-    </mat-menu>
-
-    <button [routerLink]="'basket'">
-        <mat-icon>shopping_cart</mat-icon>
-        Basket
-    </button>
-</mat-toolbar>
 
 
 
 <mat-drawer-container autosize>
-    <mat-drawer [disableClose]="!isSmallScreen()" position="start" #sidenav [mode]="isSmallScreen() ? 'over' : 'side'"
+    <mat-drawer position="start" #sidenav [mode]="'over'"
         opened="isExpanded" opened="{{isOpened}}" class="sidenav-container">
         <div>
             <div class="side-nav-items">
@@ -70,9 +11,7 @@
                     <div class="side-nav-item-button" type="button" routerLinkActive="active" [routerLink]="['']"
                         [ngClass]="{'active': urlPath('') && !urlPath('/about-us') && !urlPath('/communication')}">
                         <mat-icon fontIcon="home"></mat-icon>
-                        @if (isExpanded){
                         <span class="side-nav-item-button-span">Home</span>
-                        }
                     </div>
                 </div>
             </div>
@@ -80,6 +19,65 @@
     </mat-drawer>
 
     <mat-drawer-content>
+        <mat-toolbar>    
+            <div class="toolbar-first-container">
+                <button class="side-navigation-logo" disableRipple="true" [routerLink]="['']">
+                    <img src="assets/img/logo.png">
+                </button>
+                <span class="mat-toolbar-spacer"></span>
+                <div class="mat-toolbar-right-side">
+                    <button class="basket-box" [routerLink]="'basket'">
+                        <mat-icon>shopping_cart</mat-icon>
+                        Basket
+                    </button>
+            
+                    <button [matMenuTriggerFor]="menu" class="user-box">
+                        @if (authService.isUserSignedIn()) {
+                            {{user.Name}} 
+                            <mat-icon>arrow_drop_down</mat-icon>
+                        }@else {
+                            Hi, Sign in
+                        }
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        @if(authService.isUserSignedIn()){
+                            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'settings'">
+                                <mat-icon>settings</mat-icon>
+                                Settings
+                            </a>
+                
+                            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'orders'">
+                                <mat-icon>shopping_cart</mat-icon>
+                                Orders
+                            </a>
+                
+                            <a class="mat-menu-item-button" mat-menu-item (click)="authService.removeUser()">
+                                <mat-icon>exit_to_app</mat-icon>
+                                Sign out
+                            </a>
+                        }
+                        @else {
+                            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'sign-in'">
+                                <mat-icon>account_circle</mat-icon>
+                                Sign in
+                            </a>
+                            <div class="sign-up-container">
+                                <span>Are you new?</span>
+                                <a [routerLink]="'sign-up'">
+                                    Sign up
+                                </a>
+                            </div>
+                        }
+                    </mat-menu>
+                </div>    
+            </div>    
+            <div class="toolbar-second-container">
+                <button class="expand-button-mat-icon" (click)="sidenav.toggle()">
+                    <mat-icon class="expand-button" fontIcon="menu"></mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+
         <div class="page-content">
             <router-outlet>
 

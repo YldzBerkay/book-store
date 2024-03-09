@@ -10,7 +10,7 @@ export class CustomInterceptorService implements HttpInterceptor {
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("userAuthToken");
     const request = req.clone({
       setHeaders: {
         "Authorization": `bearer ${token}`

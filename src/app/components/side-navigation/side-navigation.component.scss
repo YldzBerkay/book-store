@@ -3,30 +3,15 @@
 }
 
 .expand-button-mat-icon {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 1rem;
     background: none;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-}
-
-@media (max-width:767px) {
-    .expand-button-mat-icon {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex !important;
-    }
-
-    .mobile-expanded {
-        display: flex;
-        justify-content: center;
-    }
-
 }
 
 .expand-button mat-icon {
@@ -41,50 +26,27 @@
     justify-content: center;
 }
 
-.list-item-container {
-    display: flex;
-    justify-content: center;
-}
-
-
-@media (min-width:768px) {
-    .expand-button-mat-icon {
-        display: flex;
-    }
-
-    .mobile-expanded {
-        display: none;
-
-    }
-
-    .hamburger {
-        display: none;
-    }
-}
-
 mat-toolbar {
-    background-color: #3498db;
+    display: flex;
+    flex-direction: column;
     padding: 0;
-    height: 5rem;
+    height: 6.5rem;
     position: fixed !important;
     z-index: 10;
 }
 
-.hamburger {
-    width: 4.5rem;
-    height: 4.5rem;
-    background: none;
-    border: none;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    color: white;
+.toolbar-first-container{
+    background-color: #3498db;
+    display: flex;
+    width: 100%;
+    height: 4rem;
 }
 
-.hamburger-div {
+.toolbar-second-container{
+    background-color: #2980b9;
     display: flex;
-    text-align: center;
-    justify-content: center;
+    width: 100%;
+    height: 2.5rem;
 }
 
 mat-nav-list {
@@ -96,11 +58,6 @@ mat-drawer {
     border: none;
     height: 100%;
     position: fixed !important;
-    padding-top: 5rem;
-}
-
-.auto-click {
-    display: none;
 }
 
 .menu-icon {
@@ -110,10 +67,12 @@ mat-drawer {
 .side-navigation-logo {
     background: none;
     border: none;
+    margin-left: 1rem;
+    cursor: pointer;
 }
 
 .side-navigation-logo img {
-    width: 5rem;
+    width: 7rem;
 }
 
 .side-navigation-mat-form-field {
@@ -202,4 +161,39 @@ mat-drawer {
 
 ::ng-deep .mat-mdc-menu-item-text{
     color: #54636E;
+}
+
+.user-box{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    border: none;
+    color: #54636E;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+}
+
+::ng-deep .basket-box{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    border: none;
+    color: #54636E;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+
+    .material-icons{
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.mat-toolbar-right-side{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 1rem;
 }

@@ -35,3 +35,7 @@ export class RefreshTokenRequestCommand{
     UserId: string;
     RefreshToken: string;
 }
+
+export class GetUserResponse{
+    User: User;
+}
