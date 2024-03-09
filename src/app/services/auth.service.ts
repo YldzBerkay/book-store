@@ -17,6 +17,7 @@ interface data {
 export class AuthService {
     userEmail: string;
     userPassword: string;
+    userRole: string;
 
     constructor(private request: RequestService) { }
 

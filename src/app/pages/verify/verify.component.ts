@@ -47,7 +47,8 @@ export class VerifyComponent implements OnInit{
     const command : SendOtpVerificationRequestCommand = {
       Email: this.authService.userEmail,
       Password: this.authService.userPassword,
-      Token: this.verifyForm.value.code
+      Token: this.verifyForm.value.code,
+      Role: this.authService.userRole
     };
     const response = await this.authService.sendOtpVerification(command);
     if (response.IsSuccessful) {

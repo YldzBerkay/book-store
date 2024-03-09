@@ -10,6 +10,7 @@ export class SendOtpVerificationRequestCommand {
     Token: string;
     Email: string;
     Password: string;
+    Role: string;
 }
 
 export class AdditionalFieldsRequestCommand{

@@ -59,6 +59,10 @@ a{
     cursor: pointer;
 }
 
+mat-checkbox{
+    color: #54636E !important;
+}
+
 .left-container {
     background-color: #54636E;
     width: 50dvw;
@@ -102,7 +106,6 @@ a{
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    padding: 2rem;
 }
 
 .form-common {
@@ -110,7 +113,7 @@ a{
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    padding: 0 2rem;
+    max-width: 400px;
 }
 
 .form-submit-button-container {

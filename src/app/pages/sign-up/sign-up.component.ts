@@ -33,12 +33,19 @@ export class SignUpComponent implements OnInit {
             Validators.required,
             Validators.minLength(6)
         ]),
+        checked: new UntypedFormControl(false)
     });
 
     ngOnInit(): void { }
 
     async onSubmit(): Promise<void> {
-        const command : SignUpRequestCommand = {
+        if (this.registerForm.controls.checked.value == false) {
+            this.authService.userRole = "User";
+        } else {
+            this.authService.userRole = "Author";            
+        }        
+
+        const command: SignUpRequestCommand = {
             Email: this.registerForm.value.email,
             Password: this.registerForm.value.password
         };
