@@ -120,106 +120,8 @@ mat-drawer {
     height: 2rem;
 }
 
-.active {
-    background-color: #54636E !important;
-
-    * {
-        color: white !important;
-    }
-}
-
-.mobile-expanded-logo {
-    background-color: #3498db;
-    width: 3.5rem;
-    padding: 0;
-}
-
-.mobile-expanded-logo-img {
-    margin: auto 0;
-    width: 5rem;
-    height: 1.809rem;
-}
-
-.mobile-expanded {
-    background-color: #3498db;
-    height: 5rem;
-}
-
-.twin-mat-icon {
-    transform: rotate(90deg);
-}
-
 .mat-toolbar-spacer {
     flex: 1 1 auto;
-}
-
-.user-logo {
-    margin-right: 1rem;
-    display: flex;
-    color: white;
-
-    * {
-        height: 2rem;
-        width: 2rem;
-        justify-content: center;
-        line-height: 2rem;
-        font-size: 2rem;
-    }
-}
-
-.user-information {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 0.5rem;
-}
-
-.user-information-photo {
-    position: relative;
-    margin-top: .5rem;
-    margin-left: .5rem;
-    margin-bottom: .5rem;
-    width: 4rem;
-    height: 4rem;
-    width: max-content;
-
-    img {
-        width: 4rem;
-        height: 4rem;
-        z-index: 1;
-        object-fit: cover;
-    }
-}
-
-.user-information-add-photo {
-    position: absolute;
-    bottom: -0.938rem;
-    right: -0.938rem;
-    z-index: 2;
-}
-
-.user-information-content {
-    margin-top: .5rem;
-    display: flex;
-    justify-content: center;
-    text-align: left;
-    flex-direction: column;
-    height: 4rem;
-    margin: 0.5rem 1rem 0 1rem;
-
-    p {
-        margin: 0;
-    }
-}
-
-.user-information-content-name {
-    font-weight: bolder;
-    font-size: 1.2rem;
-}
-
-.mat-menu-log-out-button {
-    background-color: #6EB043;
-    color: white;
-    border-radius: 1.131rem;
 }
 
 .mat-menu-log-out-div {
@@ -227,33 +129,6 @@ mat-drawer {
     text-align: center;
     justify-content: center;
     margin-top: .5rem;
-}
-
-.app-comunity-selector-v2-class {
-    margin-right: 1rem;
-}
-
-
-.side-navigation-logo-extended {
-    background: none;
-    border: none;
-    width: 8.5rem;
-    padding: 0;
-    padding-left: 0.55rem;
-
-    img {
-        width: 5rem;
-        margin-left: 1.95rem;
-    }
-}
-
-.menu-item-button {
-    display: flex;
-    align-items: center;
-    padding: 0 1.3rem;
-    height: 4rem;
-    cursor: pointer;
-
 }
 
 .side-nav-items {
@@ -309,4 +184,22 @@ mat-drawer {
     * {
         font-weight: 700;
     }
+}
+
+.sign-up-container{
+    *,a{
+        font-size: 12px !important;
+    }
+    color: #54636E;
+    padding-inline:16px;
+}
+
+.mat-menu-item-button{
+    *{
+        color: #54636E;
+    }
+}
+
+::ng-deep .mat-mdc-menu-item-text{
+    color: #54636E;
 }

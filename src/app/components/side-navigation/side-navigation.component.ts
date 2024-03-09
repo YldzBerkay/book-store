@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-side-navigation',
@@ -14,7 +15,7 @@ export class SideNavigationComponent implements OnInit {
     isExpanded: boolean = true;
     private shouldClick: boolean = true;
 
-    constructor(private location: Location) { }
+    constructor(private location: Location, public authService:AuthService) { }
 
     ngOnInit(): void {
         const storedValue = localStorage.getItem('expanded');
@@ -64,5 +65,9 @@ export class SideNavigationComponent implements OnInit {
 
     isSmallScreen(): boolean {
         return window.innerWidth < 1200;
+    }
+
+    signOut() {
+        this.authService.removeUser();
     }
 }

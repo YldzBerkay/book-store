@@ -4,6 +4,13 @@ import { AdditionalFieldsRequestCommand, RefreshTokenRequestCommand, SendOtpVeri
 import { RequestService } from './base/request.service';
 import { AuthToken } from '../models/auth/auth-token';
 
+interface data {
+    userId: string | null;
+    userAuthToken: string | null;
+    userRefreshToken: string | null;
+    userExpire: string | null;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -47,5 +54,26 @@ export class AuthService {
         const existingDate = new Date(token.Expires);
         const formattedDate = existingDate.toDateString() + ' ' + existingDate.toLocaleTimeString();
         localStorage.setItem('userExpire', JSON.stringify(formattedDate));
+    }
+
+    removeUser(): void {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userAuthToken');
+        localStorage.removeItem('userRefreshToken');
+        localStorage.removeItem('userExpire');
+    }
+
+    getUser(): data {
+        return {
+            userId: localStorage.getItem('userId'),
+            userAuthToken: localStorage.getItem('userAuthToken'),
+            userRefreshToken: localStorage.getItem('userRefreshToken'),
+            userExpire: localStorage.getItem('userExpire')
+        };
+    }
+
+    isUserSignedIn(): boolean {
+        const user = this.getUser();
+        return user.userId !== null;
     }
 }

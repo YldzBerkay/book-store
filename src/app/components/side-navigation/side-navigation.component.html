@@ -15,6 +15,43 @@
         <img src="assets/img/recycling_icon.png">
     </button>
     <span class="mat-toolbar-spacer"></span>
+    <button [matMenuTriggerFor]="menu" class="user-box">
+        @if (authService.isUserSignedIn()) {
+            Berkay
+        }@else {
+            Hi, Sign in
+        }
+    </button>
+    <mat-menu #menu="matMenu">
+        @if(authService.isUserSignedIn()){
+            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'settings'">
+                <mat-icon>settings</mat-icon>
+                Settings
+            </a>
+
+            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'orders'">
+                <mat-icon>shopping_cart</mat-icon>
+                Orders
+            </a>
+        }
+        @else {
+            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'sign-in'">
+                <mat-icon>account_circle</mat-icon>
+                Sign in
+            </a>
+            <div class="sign-up-container">
+                <span>Are you new?</span>
+                <a [routerLink]="'sign-up'">
+                    Sign up
+                </a>
+            </div>
+        }
+    </mat-menu>
+
+    <button [routerLink]="'basket'">
+        <mat-icon>shopping_cart</mat-icon>
+        Basket
+    </button>
 </mat-toolbar>
 
 
