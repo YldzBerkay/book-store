@@ -43,8 +43,9 @@ export class SignInComponent {
             Password: this.signInForm.value.password
         };
         const response = await this.authService.signIn(command);
-        if (response.IsSuccessful) {
+        if (response.IsSuccessful) {            
             if(!response.Data.User.IsRegistrationCompleted){
+                this.authService.userEmail = this.signInForm.value.email;
                 this.router.navigate(['/sign-up-informations']);
             }
             else{
