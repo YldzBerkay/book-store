@@ -62,7 +62,7 @@ export class SignInComponent {
     async getUser(){
         const response = await this.authService.getUserInfo();
         if(response.IsSuccessful){
-            localStorage.setItem('user', JSON.stringify(response.Data.User));
+            localStorage.setItem('user', JSON.stringify(response.Data));
         }
     }
 }

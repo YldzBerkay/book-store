@@ -172,6 +172,7 @@ mat-drawer {
     color: #54636E;
     cursor: pointer;
     padding: 0.3rem 0.5rem;
+    min-height: 35px;
 }
 
 ::ng-deep .basket-box{
@@ -183,7 +184,8 @@ mat-drawer {
     color: #54636E;
     cursor: pointer;
     padding: 0.3rem 0.5rem;
-
+    min-height: 35px;
+    
     .material-icons{
         font-size: 20px;
         display: flex;

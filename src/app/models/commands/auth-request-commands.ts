@@ -13,29 +13,35 @@ export class SendOtpVerificationRequestCommand {
     Role: string;
 }
 
-export class AdditionalFieldsRequestCommand{
+export class AdditionalFieldsRequestCommand {
     Name: string;
     Surname: string;
     BirthDate: Date;
     Email: string;
 }
 
-export class SignInRequestCommand{
+export class SignInRequestCommand {
     Email: string;
     Password: string;
 }
 
-export class SignInResponse{
-    User: User; 
+export class SignInResponse {
+    User: User;
     AuthToken: AuthToken;
     RefreshToken: string;
 }
 
-export class RefreshTokenRequestCommand{
+export class RefreshTokenRequestCommand {
     UserId: string;
     RefreshToken: string;
 }
 
-export class GetUserResponse{
-    User: User;
+export class ForgotPasswordRequestCommand {
+    Email: string;
+}
+
+export class ResetPasswordRequestCommand {
+    PasswordResetToken: string;
+    Password: string;
+    PasswordConfirm: string;
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ForgotPasswordRequestCommand, ResetPasswordRequestCommand } from 'src/app/models/commands/auth-request-commands';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,10 +13,22 @@ export class ForgotPasswordComponent implements OnInit {
   formError: any;
   formPasswordError: any;
   submitted = false;
+  hasParams = false;
+  paramId: string;
+  constructor(private authService: AuthService, private router:Router, private route: ActivatedRoute) { }
 
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      if (params['id']) {
+        this.hasParams = true;
+        const id = params['id']; 
+        this.paramId = id;
+      }
+    });
+  }
   forgotPasswordAnimation: Record<string, any> = {
-    path: '/assets/json/forgot_password_animation.json', // Path to your animation JSON file
-    renderer: 'svg', // Use 'canvas' or 'html' for different renderers
+    path: '/assets/json/forgot_password_animation.json', 
+    renderer: 'svg', 
     loop: true,
     autoplay: true,
   };
@@ -28,13 +43,41 @@ export class ForgotPasswordComponent implements OnInit {
     ]),
   });
 
-  constructor() { }
+  resetPassword = new UntypedFormGroup({
+    password: new UntypedFormControl('', [
+      Validators.required,
+    ]),
+    passwordConfirm: new UntypedFormControl('', [
+      Validators.required,
+      Validators.minLength(6)
+    ]),
+  });
 
-  ngOnInit(): void {
-
+  async resetPasswordSubmit(): Promise<void> {
+    this.submitted = true;
+    const command: ResetPasswordRequestCommand = {
+      Password: this.resetPassword.value.password,
+      PasswordConfirm: this.resetPassword.value.passwordConfirm,
+      PasswordResetToken: this.paramId
+    };
+    const response = await this.authService.resetPassword(command);
+    if (response.IsSuccessful) {
+      this.router.navigate(['/sign-in']);
+    } else {
+      this.formPasswordError = response.Error.join(" ");
+    }
   }
 
-  onSubmit(): void {
-    this.submitted = true;
+  async onSubmit(): Promise<void> {
+    const common: ForgotPasswordRequestCommand = {
+      Email: this.forgotPassword.value.email
+    };
+
+    const response = await this.authService.forgotPassword(common);
+    if (response.IsSuccessful) {
+    
+    } else {
+      this.formError = response.Error.join(" ");
+    }
   }
 }
