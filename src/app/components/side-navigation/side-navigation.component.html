@@ -33,6 +33,11 @@
                 <mat-icon>shopping_cart</mat-icon>
                 Orders
             </a>
+
+            <a class="mat-menu-item-button" mat-menu-item (click)="authService.removeUser()">
+                <mat-icon>exit_to_app</mat-icon>
+                Sign out
+            </a>
         }
         @else {
             <a class="mat-menu-item-button" mat-menu-item [routerLink]="'sign-in'">
