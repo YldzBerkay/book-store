@@ -31,7 +31,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { CarouselModule } from 'primeng/carousel';
 import { CustomInterceptorService } from './services/base/custom-interceptor.service';
-import { TokenInterceptor } from './services/base/refresh-token-interceptor.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
@@ -78,7 +77,6 @@ export function playerFactory() {
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

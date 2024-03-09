@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-home',
@@ -31,7 +32,7 @@ export class HomeComponent {
 
     responsiveOptions: any[] | undefined;
 
-    constructor() { }
+    constructor(public authService:AuthService) { }
 
     ngOnInit() {
 

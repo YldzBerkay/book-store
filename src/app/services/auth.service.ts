@@ -41,6 +41,10 @@ export class AuthService {
         return await this.request.send("/auth/refresh-token", command);
     }
 
+    async deneme(): Promise<any> {
+        return await this.request.send("/auth/deneme");
+    }
+
     updateUser(user: SignInResponse): void {
         localStorage.setItem('userId', user.User.Id);
         localStorage.setItem('userAuthToken', user.AuthToken.Token);

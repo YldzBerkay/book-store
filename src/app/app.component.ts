@@ -20,9 +20,28 @@ export class AppComponent implements OnInit {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 this.showRegisterOutlet = this.isRegisterRoute(event.url);
+                this.refreshToken();
             }
         });
     }
+
+    private async refreshToken(): Promise<void> {
+
+        this.tokenExpires = new Date(localStorage.getItem('userExpire') || '');
+        const currentTime = new Date();
+        if (currentTime > this.tokenExpires) {
+            const command: RefreshTokenRequestCommand = {
+                RefreshToken: localStorage.getItem('userRefreshToken') || '',
+                UserId: localStorage.getItem('userId') || ''
+            };
+            const response = await this.authService.refreshToken(command);
+
+            if (response.IsSuccessful) {
+                this.authService.updateToken(response.Data);
+            }
+        }
+    }
+
 
     private isRegisterRoute(url: string): boolean {
         const registerRoutes = ['/sign-up', '/sign-up-informations', '/verify', '/forgot-password', '/sign-in'];

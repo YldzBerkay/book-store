@@ -49,7 +49,7 @@ export class SignInComponent {
                 this.router.navigate(['/sign-up-informations']);
             }
             else{
-                this.authService.updateUser(response.Data);
+                this.authService.updateUser(response.Data);                
                 this.router.navigate(['/']);                
             }
         }else{

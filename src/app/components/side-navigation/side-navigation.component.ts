@@ -14,6 +14,7 @@ export class SideNavigationComponent implements OnInit {
     isOpened: boolean = true;
     isExpanded: boolean = true;
     private shouldClick: boolean = true;
+    user: any;
 
     constructor(private location: Location, public authService:AuthService) { }
 

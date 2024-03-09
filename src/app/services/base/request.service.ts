@@ -10,7 +10,7 @@ export class RequestService {
   baseUrl = 'https://localhost:7044/api/v1';
   constructor(private httpClient: HttpClient) { }
 
-  async send<T>(path: string, command: {}): Promise<CustomResponse<T>> {
+  async send<T>(path: string, command?: {}): Promise<CustomResponse<T>> {
     const response = await firstValueFrom(this.httpClient.post<CustomResponse<T>>(`${this.baseUrl}${path}`, command))
     return response;
   }
