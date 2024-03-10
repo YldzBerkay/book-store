@@ -1,11 +1,15 @@
-
-
-
-
 <mat-drawer-container autosize>
-    <mat-drawer position="start" #sidenav [mode]="'over'"
-        opened="isExpanded" opened="{{isOpened}}" class="sidenav-container">
+    <mat-drawer position="start" #sidenav [mode]="'over'" opened="isExpanded" opened="{{isOpened}}"
+        class="sidenav-container">
         <div>
+            <div class="sidenav-box">
+                @if (authService.isUserSignedIn()) {
+                <mat-icon>account_circle</mat-icon>
+                Hello {{(user.Name|pascalCase)}}
+                }@else {
+                Hello, Sign in
+                }
+            </div>
             <div class="side-nav-items">
                 <div class="side-nav-item">
                     <div class="side-nav-item-button" type="button" routerLinkActive="active" [routerLink]="['']"
@@ -19,7 +23,7 @@
     </mat-drawer>
 
     <mat-drawer-content>
-        <mat-toolbar>    
+        <mat-toolbar>
             <div class="toolbar-first-container">
                 <button class="side-navigation-logo" disableRipple="true" [routerLink]="['']">
                     <img src="assets/img/logo.png">
@@ -30,51 +34,77 @@
                         <mat-icon>shopping_cart</mat-icon>
                         Basket
                     </button>
-            
+
                     <button [matMenuTriggerFor]="menu" class="user-box">
                         @if (authService.isUserSignedIn()) {
-                            {{user.Name}} 
-                            <mat-icon>arrow_drop_down</mat-icon>
+                        {{(user.Name|pascalCase)}} 
+                        <mat-icon>arrow_drop_down</mat-icon>
                         }@else {
-                            Hi, Sign in
+                        Hi, Sign in
                         }
                     </button>
                     <mat-menu #menu="matMenu">
                         @if(authService.isUserSignedIn()){
-                            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'settings'">
-                                <mat-icon>settings</mat-icon>
-                                Settings
-                            </a>
-                
-                            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'orders'">
-                                <mat-icon>shopping_cart</mat-icon>
-                                Orders
-                            </a>
-                
-                            <a class="mat-menu-item-button" mat-menu-item (click)="authService.removeUser()">
-                                <mat-icon>exit_to_app</mat-icon>
-                                Sign out
-                            </a>
+                        <a class="mat-menu-item-button" mat-menu-item [routerLink]="'settings'">
+                            <mat-icon>settings</mat-icon>
+                            Settings
+                        </a>
+
+                        <a class="mat-menu-item-button" mat-menu-item [routerLink]="'orders'">
+                            <mat-icon>shopping_cart</mat-icon>
+                            Orders
+                        </a>
+
+                        <a class="mat-menu-item-button" mat-menu-item (click)="authService.removeUser()">
+                            <mat-icon>exit_to_app</mat-icon>
+                            Sign out
+                        </a>
                         }
                         @else {
-                            <a class="mat-menu-item-button" mat-menu-item [routerLink]="'sign-in'">
-                                <mat-icon>account_circle</mat-icon>
-                                Sign in
+                        <a class="mat-menu-item-button" mat-menu-item [routerLink]="'sign-in'">
+                            <mat-icon>account_circle</mat-icon>
+                            Sign in
+                        </a>
+                        <div class="sign-up-container">
+                            <span>Are you new?</span>
+                            <a [routerLink]="'sign-up'">
+                                Sign up
                             </a>
-                            <div class="sign-up-container">
-                                <span>Are you new?</span>
-                                <a [routerLink]="'sign-up'">
-                                    Sign up
-                                </a>
-                            </div>
+                        </div>
                         }
                     </mat-menu>
-                </div>    
-            </div>    
+                </div>
+            </div>
             <div class="toolbar-second-container">
                 <button class="expand-button-mat-icon" (click)="sidenav.toggle()">
                     <mat-icon class="expand-button" fontIcon="menu"></mat-icon>
                 </button>
+                <div class="toolbar-links">
+                    <a class="toolbar-link" [routerLink]="'best-seller'">
+                        Best Seller
+                    </a>
+                    <a class="toolbar-link" [routerLink]="'new-arrivals'">
+                        New Releases
+                    </a>
+                    <a class="toolbar-link" [routerLink]="'sales'">
+                        Sales
+                    </a>
+                    <a class="toolbar-link" [routerLink]="'science-fiction'">
+                        Science Fiction
+                    </a>
+                    <a class="toolbar-link" [routerLink]="'crime'">
+                        Crime
+                    </a>
+                    <a class="toolbar-link" [routerLink]="'series-and-movies'">
+                        Series & Movies
+                    </a>
+                    <a class="toolbar-link" [routerLink]="'children'">
+                        Children
+                    </a>
+                    <a class="toolbar-link" [routerLink]="'music-cds'">
+                        Music CDs
+                    </a>
+                </div>
             </div>
         </mat-toolbar>
 

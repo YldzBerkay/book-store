@@ -6,6 +6,7 @@
     width: 2.5rem;
     height: 2.5rem;
     margin-left: 1rem;
+    margin-right: .5rem;
     background: none;
     border: none;
     display: flex;
@@ -33,6 +34,14 @@ mat-toolbar {
     height: 6.5rem;
     position: fixed !important;
     z-index: 10;
+}
+
+.active {
+    background-color: #2980b9 !important;
+
+    * {
+        color: white !important;
+    }
 }
 
 .toolbar-first-container{
@@ -185,7 +194,7 @@ mat-drawer {
     cursor: pointer;
     padding: 0.3rem 0.5rem;
     min-height: 35px;
-    
+
     .material-icons{
         font-size: 20px;
         display: flex;
@@ -198,4 +207,35 @@ mat-drawer {
     align-items: center;
     gap: 1rem;
     margin-right: 1rem;
+}
+
+.toolbar-links{
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 2.5rem;
+    overflow-y: hidden;
+}
+
+.sidenav-box{
+    height: 4rem;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .3rem;
+    padding-inline: 1rem;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.toolbar-link{
+    min-height: 2.5rem;
+    color: white !important;
+    padding-inline: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px !important;
 }

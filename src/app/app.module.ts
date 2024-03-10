@@ -13,7 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { NgIf, TitleCasePipe } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { SignUpInformationsComponent } from './pages/sign-up-informations/sign-up-informations.component';
@@ -32,6 +32,7 @@ import { BookCardComponent } from './components/book-card/book-card.component';
 import { CarouselModule } from 'primeng/carousel';
 import { CustomInterceptorService } from './services/base/custom-interceptor.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PascalCasePipe } from './Pipes/pascal-case.pipe';
 
 
 
@@ -49,7 +50,8 @@ export function playerFactory() {
     VerifyComponent,
     SideNavigationComponent,
     HomeComponent,
-    BookCardComponent
+    BookCardComponent,
+    PascalCasePipe
   ],
   imports: [
     BrowserModule,
