@@ -11,7 +11,7 @@ import { AuthguardService } from './services/base/authguard.service';
 const routes: Routes = [
   {path:'verify', component: VerifyComponent},
   {path:'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthguardService]},
-  {path:'forgot-password/:id', component: ForgotPasswordComponent, canActivate: [AuthguardService]},
+  {path:'forgot-password/:id', component: ForgotPasswordComponent},
   {path:'sign-up-informations', component: SignUpInformationsComponent},
   {path:'sign-in', component: SignInComponent, canActivate: [AuthguardService]},
   {path:'sign-up', component: SignUpComponent, canActivate: [AuthguardService]},

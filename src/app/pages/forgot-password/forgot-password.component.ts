@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ForgotPasswordComponent implements OnInit {
   formError: any;
   formPasswordError: any;
+  isSuccessful = false;
   submitted = false;
   hasParams = false;
   paramId: string;
@@ -69,15 +70,18 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
+    this.submitted = true;
     const common: ForgotPasswordRequestCommand = {
       Email: this.forgotPassword.value.email
     };
 
     const response = await this.authService.forgotPassword(common);
     if (response.IsSuccessful) {
-    
+      this.isSuccessful = true;
+      
     } else {
       this.formError = response.Error.join(" ");
+      this.isSuccessful = false;
     }
   }
 }
