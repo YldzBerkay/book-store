@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,51 +7,81 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-    products: any[] = [
+
+    books: any[] = [
         {
             id: 1,
-            title: 'The Catcher in the Rye',
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye1',
+            cardType: 'Novel',
+            cardPrice: 10,
         },
         {
-            id: 1,
-            title: 'The Catcher in the Rye',
-        },{
-            id: 1,
-            title: 'The Catcher in the Rye',
-        },{
-            id: 1,
-            title: 'The Catcher in the Rye',
-        },{
-            id: 1,
-            title: 'The Catcher in the Rye',
-        },{
-            id: 1,
-            title: 'The Catcher in the Rye',
+            id: 2,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye2',
+            cardType: 'Novel',
+            cardPrice: 10,
         },
-    ];
+        {
+            id: 3,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye3',
+            cardType: 'Novel',
+            cardPrice: 10,
+        },
+        {
+            id: 4,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye4',
+            cardType: 'Novel',
+            cardPrice: 10,
+        },
+        {
+            id: 5,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye5',
+            cardType: 'Novel',
+            cardPrice: 10,
+        },
+        {
+            id: 6,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye6',
+            cardType: 'Novel',
+            cardPrice: 10,
+        },
+        {
+            id: 7,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye7',
+            cardType: 'Novel',
+            cardPrice: 10,
+        },
+        {
+            id: 8,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye8',
+            cardType: 'Novel',
+            cardPrice: 10,
+        },
+        {
+            id: 9,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye9',
+            cardType: 'Novel',
+            cardPrice: 10,
+        },
+        {
+            id: 10,
+            img:'assets/img/stephan_king_it.png',
+            cardName: 'The Catcher in the Rye10',
+            cardType: 'Novel',
+            cardPrice: 10,
+        }
+    ]
 
-    responsiveOptions: any[] | undefined;
+    constructor(public authService: AuthService) { }
 
-    constructor(public authService:AuthService) { }
-
-    ngOnInit() {
-
-        this.responsiveOptions = [
-            {
-                breakpoint: '1000px',
-                numVisible: 3,
-                numScroll: 1,
-            },
-            {
-                breakpoint: '768px',
-                numVisible: 2,
-                numScroll: 1,
-            },
-            {
-                breakpoint: '570px',
-                numVisible: 1,
-                numScroll: 1,
-            },
-        ];
-    }
+    
 }

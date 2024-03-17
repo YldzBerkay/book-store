@@ -1,0 +1,19 @@
+.carousel-container {
+    width: 100dvw;
+}
+
+::ng-deep .carousel-container {
+    .p-element{
+        max-width: unset !important;
+    }
+
+    img{
+        height: 100%;
+        max-height: 300px;
+    }
+
+    p-galleriathumbnails{
+        display: none;
+    }
+}
+

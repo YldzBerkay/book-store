@@ -1,13 +1,19 @@
 .card-content {
+    position: relative;
     display: flex;
     padding: .5rem;
     border-radius: 10px;
     width: 100%;
     height: 100%;
     flex-direction: column;
+    overflow-y: hidden;
 }
 
-.test{
+.card-content:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-content-container{
     display: flex;
     padding: 1rem;
     background-color: #fff;
@@ -43,7 +49,7 @@
     height: 2.8em;
     p {
         display: -webkit-box;
-        -webkit-line-clamp: 2; /* Number of lines to show */
+        -webkit-line-clamp: 2; 
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
@@ -71,4 +77,16 @@ h4 {
 
 .submit-button-style{
     margin-top: .5rem;
+}
+
+.add-button {
+    position: absolute;
+    bottom: -40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    transition: bottom 0.3s ease; 
+}
+
+.card-content:hover .add-button {
+    bottom: 20px; 
 }

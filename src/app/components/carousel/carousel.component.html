@@ -1,0 +1,7 @@
+<div class="carousel-container">
+    <p-galleria [value]="images" [autoPlay]="true" [circular]="true" [responsiveOptions]="responsiveOptions" [numVisible]="5"> 
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.itemImageSrc" style="width: 100%;" />
+        </ng-template>
+    </p-galleria>
+</div>

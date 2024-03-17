@@ -1,0 +1,22 @@
+<div class="carousel-multi">
+    <button class="button-left carousel-button-normal" (click)="previousFunction()" [disabled]="previousDisabled">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="container-carousel" [@slideContainer]="{ value: animationState, params: { offsetX: offsetX } }">
+        <app-book-card *ngFor="let item of showedItems; let i = index" [book]="item"></app-book-card>
+      </div>
+      
+
+    <button class="button-right carousel-button-normal" (click)="nextFunction()" [disabled]="nextDisabled">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+
+    <div class="carousel-multi-button-responsive">
+        <button class="button-left" (click)="previousFunction()" [disabled]="previousDisabled">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button class="button-right" (click)="nextFunction()" [disabled]="nextDisabled">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+</div>

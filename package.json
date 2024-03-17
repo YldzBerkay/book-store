@@ -23,6 +23,7 @@
     "angular-code-input": "^2.0.0",
     "ngx-lottie": "^10.0.0",
     "primeng": "^17.8.0",
+    "ngx-slickjs": "^1.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

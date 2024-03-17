@@ -1,22 +1,13 @@
-p-carousel{
-    width: 100%;
-}
+::ng-deep .home-page {
+    .mat-mdc-tab-header {
+        margin-bottom: 1rem;
+    }
 
-.test{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
+    mat-tab-group{
+        width: 100%;
+    }
 
-:host ::ng-deep {
-    .product-item {
-        .product-item-content {
-            border: 1px solid var(--surface-d);
-            border-radius: 3px;
-            margin: .3rem;
-            text-align: center;
-            padding: 2rem 0;
-        }
-    
+    app-carousel-multi{
+        width: 100%;
     }
 }

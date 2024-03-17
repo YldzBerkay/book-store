@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CustomResponse } from '../models/custom-response';
-import { AdditionalFieldsRequestCommand, ForgotPasswordRequestCommand, RefreshTokenRequestCommand, ResetPasswordRequestCommand, SendOtpVerificationRequestCommand, SignInResponse, SignUpRequestCommand } from '../models/commands/auth-request-commands';
+import { AdditionalFieldsRequestCommand, ForgotPasswordRequestCommand, RefreshTokenRequestCommand, ResetPasswordRequestCommand, SendOtpVerificationRequestCommand, SignInResponse, SignUpRequestCommand, UpdatePasswordRequestCommand, UpdateProfileRequestCommand } from '../models/commands/auth-request-commands';
 import { RequestService } from './base/request.service';
 import { AuthToken } from '../models/auth/auth-token';
 import { User } from '../models/auth/user';
@@ -52,6 +52,14 @@ export class AuthService {
 
     async resetPassword(command: ResetPasswordRequestCommand): Promise<CustomResponse<string>> {
         return await this.request.send("/auth/reset-password", command);
+    }
+
+    async updatePassword(command: UpdatePasswordRequestCommand): Promise<CustomResponse<string>> {
+        return await this.request.send("/auth/update-password", command);
+    }
+
+    async updateProfile(command: UpdateProfileRequestCommand): Promise<CustomResponse<User>> {
+        return await this.request.send("/auth/update-profile", command);
     }
 
     updateUser(user: SignInResponse): void {

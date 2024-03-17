@@ -1,0 +1,78 @@
+$one-row-limit: 400px;
+$two-row-limit: 600px;
+$three-row-limit: 900px;
+$four-row-limit: 1200px;
+
+.container-carousel {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(175px, 352px);
+    padding: 1rem;
+    overflow: hidden;
+    position: relative;
+
+    @media (max-width: $four-row-limit) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: $three-row-limit) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: $two-row-limit) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $one-row-limit) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.carousel-multi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.carousel-multi-button-responsive{
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    @media (max-width: 768px) {
+        display: flex;
+    }
+}
+
+.button-right,.button-left{
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: white;
+    border: none;
+    background-color: #007ACC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-right:hover,.button-left:hover{
+    background-color: #005f8b;
+
+}
+
+.button-right:disabled,.button-left:disabled{
+    background-color: #d3d3d3;
+}
+
+.carousel-button-normal{
+    @media (max-width: 768px) {
+        display: none;
+    }
+}

@@ -1,19 +1,29 @@
-<div class="container">
-    <div class="row">
-        <h1>Home</h1>
+<app-carousel></app-carousel>
+
+<div class="container home-page">
+    <div class="size-12">
+        <div class="card-container">
+            <mat-tab-group class="books-releases-offers">
+                <mat-tab label="New Books">
+                    <app-carousel-multi [books]="books"></app-carousel-multi>
+                </mat-tab>
+                <mat-tab label="New Releases">
+                    <app-carousel-multi [books]="books"></app-carousel-multi>
+                </mat-tab>
+                <mat-tab label="Offers of The Day">
+                    <app-carousel-multi [books]="books"></app-carousel-multi>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
     </div>
 
     <div class="size-12">
         <div class="card-container">
             <div class="card-header">
-                <h3>New Books</h3>
+                <h3>Selected for You</h3>
             </div>
-
-            <p-carousel [value]="products" [numVisible]="4" [numScroll]="1" [responsiveOptions]="responsiveOptions">
-                <ng-template let-product pTemplate="item">
-                    <app-book-card></app-book-card>
-                </ng-template>
-            </p-carousel>
+            <app-carousel-multi [books]="books"></app-carousel-multi>
         </div>
 
     </div>

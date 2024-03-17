@@ -40,7 +40,7 @@ h3{
     margin: 0 !important;
 }
 
-h4{
+h4, .mat-mdc-tab{
     color: #54636E;
     font-size: 16px !important;
     font-weight: 700 !important
@@ -135,7 +135,19 @@ mat-checkbox{
         padding: 0 0.75rem;
         min-width: 95px;
     }
+}
 
+.add-button{
+    background-color: #007ACC !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+
+    span {
+        padding: 0 0.75rem;
+    }
 }
 
 .set-visibility-icon{
@@ -162,6 +174,10 @@ mat-checkbox{
     padding-block: 2rem;
     width: 100%;
     gap: 2rem;
+
+    @media (max-width: $phones) {
+        padding-inline: 0;
+    }
 }
 
 .row{
@@ -228,4 +244,13 @@ mat-checkbox{
         font-weight: 800;
         text-decoration: underline;
     }
+}
+
+.mat-mdc-tab-label-container{
+    border-bottom: 1px solid #54636E;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label, .mat-mdc-tab .mdc-tab-indicator__content--underline{
+    border-color: #007ACC !important;
+    color: #007ACC !important;
 }

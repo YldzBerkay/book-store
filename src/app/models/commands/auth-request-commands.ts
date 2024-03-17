@@ -45,3 +45,16 @@ export class ResetPasswordRequestCommand {
     Password: string;
     PasswordConfirm: string;
 }
+
+export class UpdatePasswordRequestCommand{
+    OldPassword: string;
+    Password: string;
+    PasswordConfirm: string;
+}
+
+export class UpdateProfileRequestCommand {
+    Name: string;
+    Surname: string;
+    Email: string;
+    BirthDate: Date;
+}
