@@ -4,8 +4,7 @@
     </button>
     <div class="container-carousel" [@slideContainer]="{ value: animationState, params: { offsetX: offsetX } }">
         <app-book-card *ngFor="let item of showedItems; let i = index" [book]="item"></app-book-card>
-      </div>
-      
+    </div>
 
     <button class="button-right carousel-button-normal" (click)="nextFunction()" [disabled]="nextDisabled">
         <mat-icon>keyboard_arrow_right</mat-icon>

@@ -43,7 +43,8 @@ $four-row-limit: 1200px;
 
 .carousel-multi-button-responsive{
     display: none;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
     width: 100%;
     @media (max-width: 768px) {
         display: flex;

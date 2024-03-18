@@ -28,15 +28,17 @@ export class CarouselMultiComponent implements OnInit, OnDestroy {
   constructor(private renderer: Renderer2, private el: ElementRef) {}
 
   ngOnInit() {
-    this.onResize();
     this.updateShowedItems();
     this.updateButtonStates();
     this.resizeListener = this.renderer.listen('window', 'resize', () => this.onResize());
+    this.onResize();
   }
 
   ngOnDestroy() {
-    this.resizeListener();
-  }
+    if (this.resizeListener) {
+        this.resizeListener(); // Call the function only if it exists
+    }
+}
 
   private updateShowedItems() {
     this.showedItems = this.books.slice(this.firstIndex, this.firstIndex + this.maxItems);
